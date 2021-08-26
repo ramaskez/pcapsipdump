@@ -1,5 +1,5 @@
 DEVICE=ens192
 SPOOLDIR=/telesero_pcap
 RTP_FILTER=none
-FILENAME_FORMAT=%i.pcap
+FILENAME_FORMAT=%Y%m%d/%i.pcap
 FILTER_EXPRESSION='udp or tcp'
