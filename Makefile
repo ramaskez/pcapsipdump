@@ -38,8 +38,6 @@ clean: make-checks/clean
 
 install: pcapsipdump $(EXTRA_INSTALL)
 	install pcapsipdump ${DESTDIR}/usr/sbin/pcapsipdump
-	mkdir -p ${DESTDIR}/var/spool/pcapsipdump
-	chmod 0700 ${DESTDIR}/var/spool/pcapsipdump
 
 install-redhat:
 	install redhat/pcapsipdump.init ${DESTDIR}/etc/rc.d/init.d/pcapsipdump
