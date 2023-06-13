@@ -71,6 +71,57 @@ size_t expand_dir_template(char *s, size_t max, const char *format,
     }
 }
 
+// Debug function from above
+// size_t expand_dir_template(char *s, size_t max, const char *format,
+//                            const char *from,
+//                            const char *to,
+//                            const char *callid,
+//                            const time_t t) {
+//     // Debugging: Print input values
+//     printf("Input format: %s\n", format);
+//     printf("From: %s\n", from);
+//     printf("To: %s\n", to);
+//     printf("CallID: %s\n", callid);
+
+//     struct tm *tm = localtime(&t);
+//     size_t fl = strlen(format);
+//     size_t s1l = fl + 256;
+//     char *s1 = (char *)malloc(s1l);
+//     char *s1p = s1;
+//     for (size_t i = 0; i <= fl; i++) {
+//         char c0 = format[i];
+//         if (c0 == '%' && i < fl - 1) {
+//             char c1 = format[i+1];
+//             if (c1 == 'f' && (s1l - (s1p - s1)) > strlen(from) ){
+//                 strcpy(s1p, from);
+//                 s1p += strlen(from);
+//                 i++;
+//             } else if (c1 == 't' && (s1l - (s1p - s1)) > strlen(to) ){
+//                 strcpy(s1p, to);
+//                 s1p += strlen(to);
+//                 i++;
+//             } else if (c1 == 'i' && (s1l - (s1p - s1)) > strlen(callid) ){
+//                 strcpy(s1p, callid);
+//                 s1p += strlen(callid);
+//                 i++;
+//             } else {
+//                 *(s1p++) = c0;
+//             }
+//         } else {
+//             *(s1p++) = c0;
+//         }
+
+//     }
+//     {
+//         size_t r = strftime(s, max, s1, tm);
+//         free(s1);
+//         // Debugging: Print generated filename
+//         printf("Generated filename: %s\n", s);
+//         return r;
+//     }
+// }
+
+
 
 int opts_sanity_check_d(char **opt_fntemplate)
 {

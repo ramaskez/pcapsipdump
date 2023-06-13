@@ -20,7 +20,7 @@
 
 NAME="pcapsipdump"
 DAEMON="/usr/sbin/pcapsipdump"
-DAEMON_ARGS="-d $SPOOLDIR/$FILENAME_FORMAT -i $DEVICE -R $RTP_FILTER $FILTER_EXPRESSION"
+DAEMON_ARGS="-d $SPOOLDIR/$FILENAME_FORMAT -i $DEVICE -R $RTP_FILTER -m ^(INVITE)$ $FILTER_EXPRESSION"
 PIDFILE="/var/run/pcapsipdump.pid"
 
 start() {
