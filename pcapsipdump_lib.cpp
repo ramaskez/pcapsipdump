@@ -29,7 +29,7 @@ int mkdir_p(const char *path, mode_t mode) {
     return -1;
 }
 
-
+// Amended to remove . from filenames!
 size_t expand_dir_template(char *s, size_t max, const char *format,
                            const char *from,
                            const char *to,
@@ -45,16 +45,46 @@ size_t expand_dir_template(char *s, size_t max, const char *format,
         if (c0 == '%' && i < fl - 1) {
             char c1 = format[i+1];
             if (c1 == 'f' && (s1l - (s1p - s1)) > strlen(from) ){
-                strcpy(s1p, from);
-                s1p += strlen(from);
+                const char *src = from;
+                char *dest = s1p;
+                while (*src != '\0') {
+                    if (*src == '.') {
+                        *(dest++) = '_';
+                    } else {
+                        *(dest++) = *src;
+                    }
+                    src++;
+                }
+                *dest = '\0';
+                s1p = dest;
                 i++;
             } else if (c1 == 't' && (s1l - (s1p - s1)) > strlen(to) ){
-                strcpy(s1p, to);
-                s1p += strlen(to);
+                const char *src = to;
+                char *dest = s1p;
+                while (*src != '\0') {
+                    if (*src == '.') {
+                        *(dest++) = '_';
+                    } else {
+                        *(dest++) = *src;
+                    }
+                    src++;
+                }
+                *dest = '\0';
+                s1p = dest;
                 i++;
             } else if (c1 == 'i' && (s1l - (s1p - s1)) > strlen(callid) ){
-                strcpy(s1p, callid);
-                s1p += strlen(callid);
+                const char *src = callid;
+                char *dest = s1p;
+                while (*src != '\0') {
+                    if (*src == '.') {
+                        *(dest++) = '_';
+                    } else {
+                        *(dest++) = *src;
+                    }
+                    src++;
+                }
+                *dest = '\0';
+                s1p = dest;
                 i++;
             } else {
                 *(s1p++) = c0;
