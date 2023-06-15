@@ -1,5 +1,5 @@
-DEVICE=ens18
-SPOOLDIR=/telesero_pcap
+DEVICE=eth0
+SPOOLDIR=/var/spool/pcapsipdump
 RTP_FILTER=rtp+rtcp
 FILENAME_FORMAT=%Y%m%d/%H/%Y%m%d-%H%M%S-%f-%t-%i.pcap
 FILTER_EXPRESSION='udp or tcp'
