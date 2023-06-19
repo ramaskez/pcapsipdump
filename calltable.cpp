@@ -203,8 +203,9 @@ int calltable::find_ip_port_ssrc(
 int calltable::do_cleanup( time_t currtime ){
     int idx;
     for (idx = 0; idx < (int)table.size(); idx++) {
+        // THIS IS THE EVENT TIMER. SET to 30 Seconds
 	if (table[idx].is_used && (
-                    (currtime - table[idx].last_packet_time > 300) ||
+                    (currtime - table[idx].last_packet_time > 60) ||
                     (currtime - table[idx].first_packet_time > opt_absolute_timeout))){
 	    if (table[idx].f_pcap != NULL){
 		pcap_dump_close(table[idx].f_pcap);
